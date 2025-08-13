@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { AnimatedThemeToggler } from "./components/magicui/animated-theme-toggler";
+import NavbarComponent from "./assets/navbar";
 
 function App() {
   useEffect(() => {
@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-      <AnimatedThemeToggler />
+      <NavbarComponent />
     </>
   );
 }
