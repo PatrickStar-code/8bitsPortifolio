@@ -1,7 +1,7 @@
 "use client";
 
 import { Moon, SunDim } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { flushSync } from "react-dom";
 import { cn } from "../../lib/utils";
 
@@ -12,9 +12,15 @@ type props = {
 export const AnimatedThemeToggler = ({ className }: props) => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (dark) document.documentElement.classList.add("dark");
+    setIsDarkMode(dark);
+  }, []);
+
   const changeTheme = async () => {
     if (!buttonRef.current) return;
-
     await document.startViewTransition(() => {
       flushSync(() => {
         const dark = document.documentElement.classList.toggle("dark");
