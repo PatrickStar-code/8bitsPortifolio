@@ -38,10 +38,21 @@ export interface BitButtonProps
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
   ref?: React.Ref<HTMLButtonElement>;
+  colorBorder?: string;
+  colorBorderBlack?: string;
+  colorBorderHover?: string;
 }
 
 function Button({ children, asChild, ...props }: BitButtonProps) {
-  const { variant, size, className, font } = props;
+  const {
+    variant,
+    size,
+    className,
+    font,
+    colorBorder,
+    colorBorderBlack,
+    colorBorderHover,
+  } = props;
 
   return (
     <ShadcnButton
@@ -62,7 +73,11 @@ function Button({ children, asChild, ...props }: BitButtonProps) {
           {variant !== "ghost" && variant !== "link" && size !== "icon" && (
             <>
               {/* Pixelated border */}
-              <div className="absolute -top-1.5 w-1/2 left-1.5 h-1.5 bg-foreground dark:bg-ring" />
+              <div
+                className={`absolute -top-1.5 w-1/2 left-1.5 h-1.5 ${
+                  colorBorder ? colorBorder : "bg-foreground dark:bg-ring"
+                } bg-foreground dark:bg-ring                 `}
+              />
               <div className="absolute -top-1.5 w-1/2 right-1.5 h-1.5 bg-foreground dark:bg-ring" />
               <div className="absolute -bottom-1.5 w-1/2 left-1.5 h-1.5 bg-foreground dark:bg-ring" />
               <div className="absolute -bottom-1.5 w-1/2 right-1.5 h-1.5 bg-foreground dark:bg-ring" />
