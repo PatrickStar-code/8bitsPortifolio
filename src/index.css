@@ -3,6 +3,20 @@
 
 @custom-variant dark (&:is(.dark *));
 
+.shadow-inner {
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+.custom-cut {
+  clip-path: polygon(
+    0 0,
+    /* canto superior esquerdo */ 100% 0,
+    /* canto superior direito */ 90% 100%,
+    /* ponto recortado na parte inferior direita */ 0 120%
+      /* canto inferior esquerdo */
+  );
+}
+
 :root {
   --background: #ffffff;
   --foreground: #111827;
@@ -69,26 +83,6 @@ a:hover {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: var(--muted);
-  color: var(--foreground);
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: var(--primary);
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {
