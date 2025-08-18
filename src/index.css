@@ -17,6 +17,22 @@
   );
 }
 
+a {
+  cursor: none;
+}
+
+button {
+  cursor: none;
+}
+
+input {
+  cursor: none;
+}
+
+img {
+  cursor: none;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #111827;

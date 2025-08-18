@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import NavbarComponent from "../components/navbar";
 import { useNavigate } from "react-router-dom";
+import MainSection from "../components/mainSection";
 
 export default function PortifolioPage() {
   const navigate = useNavigate();
@@ -16,11 +17,12 @@ export default function PortifolioPage() {
 
   return (
     <motion.main
-      className="background relative w-full h-screen overflow-hidden"
+      className="background w-full h-screen overflow-hidden"
       animate={zoomOut ? { scale: 0, opacity: 0 } : { scale: 1 }}
       transition={{ duration: 1, ease: "easeInOut" }}
     >
       <NavbarComponent />
+      <MainSection />
       <img
         src="/imgs/gameboy.png"
         className="absolute right-4 bottom-4 cursor-pointer animate-bounce"

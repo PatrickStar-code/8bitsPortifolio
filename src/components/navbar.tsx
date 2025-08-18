@@ -20,7 +20,7 @@ export default function NavbarComponent() {
 
   return (
     <NavigationMenu
-      className={`fixed top-0 left-0 w-full flex justify-between items-center px-6 py-3 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full flex justify-between items-center px-6 py-3 z-50 mt-4 transition-all duration-300 ${
         isScrolled
           ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-md"
           : "bg-transparent"
