@@ -20,9 +20,9 @@ export default function NavbarComponent() {
 
   return (
     <NavigationMenu
-      className={`fixed top-0 left-0 w-full flex justify-between items-center px-6 py-3 z-50 mt-4 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full  flex justify-between items-center px-6 py-3 z-50 pt-4 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-md"
+          ? " dark:bg-gray-900/80 backdrop-blur-md shadow-md"
           : "bg-transparent"
       }`}
     >
@@ -33,16 +33,18 @@ export default function NavbarComponent() {
         transition={{ duration: 0.5 }}
         className="ml-2"
       >
-        <p className="text-2xl text-[#3b82f6] font-bold">PatrickStarCode</p>
+        <p className="text-2xl hover:text-[#3B82F6] font-bold">
+          PatrickStarCode
+        </p>
       </motion.div>
 
       {/* Menu Desktop */}
       <NavigationMenuList className="hidden md:flex gap-6 mr-4">
-        {["Home", "About", "Projects", "Contact"].map((item, idx) => (
+        {["Inicio", "Sobre", "Projetos", "Contato"].map((item, idx) => (
           <NavigationMenuItem key={idx}>
             <motion.a
               href={`/${item.toLowerCase()}`}
-              className="text-gray-800 dark:text-gray-200 hover:text-[#3b82f6] transition-colors"
+              className="transition-colors hover:text-[#3B82F6]"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -72,7 +74,7 @@ export default function NavbarComponent() {
             transition={{ duration: 0.3 }}
             className="absolute top-16 left-0 w-full bg-white dark:bg-gray-900 shadow-md md:hidden flex flex-col items-center gap-6 py-6 z-40"
           >
-            {["Home", "About", "Projects", "Contact"].map((item, idx) => (
+            {["Inicio", "Sobre", "Projetos", "Contato"].map((item, idx) => (
               <motion.a
                 key={idx}
                 href={`/${item.toLowerCase()}`}

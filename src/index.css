@@ -17,6 +17,22 @@
   );
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ebf8ff; /* Azul claro */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3182ce; /* Azul forte */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2c5282; /* Azul mais escuro ao passar o mouse */
+}
+
 a {
   cursor: none;
 }
@@ -87,20 +103,23 @@ img {
   --spacing: 0.25rem;
 }
 
-a {
-  font-weight: 500;
-  color: var(--primary);
-  text-decoration: inherit;
-}
-a:hover {
-  color: var(--foreground);
+body {
+  scroll-behavior: smooth;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.pixel-border {
+  box-shadow: 4px 0 0 0 currentColor, -4px 0 0 0 currentColor,
+    0 4px 0 0 currentColor, 0 -4px 0 0 currentColor, 4px 4px 0 0 currentColor,
+    -4px -4px 0 0 currentColor, 4px -4px 0 0 currentColor,
+    -4px 4px 0 0 currentColor;
 }
 
+.pixel-border-sm {
+  box-shadow: 2px 0 0 0 currentColor, -2px 0 0 0 currentColor,
+    0 2px 0 0 currentColor, 0 -2px 0 0 currentColor, 2px 2px 0 0 currentColor,
+    -2px -2px 0 0 currentColor, 2px -2px 0 0 currentColor,
+    -2px 2px 0 0 currentColor;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: var(--foreground);

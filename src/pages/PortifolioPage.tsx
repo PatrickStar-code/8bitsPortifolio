@@ -3,6 +3,7 @@ import { useState } from "react";
 import NavbarComponent from "../components/navbar";
 import { useNavigate } from "react-router-dom";
 import MainSection from "../components/mainSection";
+import AboutSection from "../components/aboutSection";
 
 export default function PortifolioPage() {
   const navigate = useNavigate();
@@ -11,18 +12,20 @@ export default function PortifolioPage() {
   const handleClick = () => {
     setZoomOut(true);
     setTimeout(() => {
-      navigate("/"); // rota do gameboy
-    }, 500); // tempo da animação
+      navigate("/");
+    }, 500);
   };
 
   return (
     <motion.main
-      className="background w-full h-screen overflow-hidden"
+      className=" w-full h-screen overflow-hidden snap-mandatory scroll-smooth snap-y overflow-y-scroll "
       animate={zoomOut ? { scale: 0, opacity: 0 } : { scale: 1 }}
       transition={{ duration: 1, ease: "easeInOut" }}
+      viewport={{ once: true, amount: 0.3 }}
     >
       <NavbarComponent />
       <MainSection />
+      <AboutSection />
       <img
         src="/imgs/gameboy.png"
         className="absolute right-4 bottom-4 cursor-pointer animate-bounce"
