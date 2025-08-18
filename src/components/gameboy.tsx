@@ -59,8 +59,10 @@ export default function Gameboy() {
       >
         {/* Tela Mockup */}
         <div className="gameboy-screen-mockup relative w-[80%] h-[40%] border-[#565763] bg-[#565763] border-4 mt-20 flex flex-col p-2 rounded-t-2xl rounded-bl-2xl rounded-br-4xl retro text-xs">
-          <p className="text-center text-white">Dot Matter With Stereo Sound</p>
-          <div className=" absolute  top-1/2 flex flex-col items-center ml-2 gap-2">
+          <p className="text-center text-white hidden md:block">
+            Dot Matter With Stereo Sound
+          </p>
+          <div className=" absolute  top-1/2 flex flex-col items-center -left-2 md:left-0 ml-2 gap-2">
             <div
               className={`pin w-3 h-3  ${
                 isOn ? "bg-green-400" : "bg-[#291920]"
