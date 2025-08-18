@@ -5,22 +5,25 @@ import { PixelImage } from "./magicui/pixel-image";
 
 export default function AboutSection() {
   return (
-    <section className="h-screen snap-start flex items-center justify-center">
+    <section className="min-h-screen snap-start flex items-center justify-center px-4 sm:px-6 md:px-12">
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.5 }}
+        className="w-full max-w-6xl"
       >
-        <Card className="p-8">
+        <Card className="p-6 sm:p-8">
+          {/* Container imagem + título */}
           <motion.div
-            className="flex items-center justify-center mb-4"
+            className="flex flex-col md:flex-row items-center md:items-start justify-center md:justify-between gap-6 md:gap-12 mb-6"
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             viewport={{ once: true, amount: 0.5 }}
           >
-            <div className="mr-12">
+            {/* Imagem responsiva */}
+            <div className="flex-shrink-0">
               <PixelImage
                 src="/imgs/out.png"
                 customGrid={{ rows: 4, cols: 6 }}
@@ -28,21 +31,23 @@ export default function AboutSection() {
               />
             </div>
 
+            {/* Texto responsivo */}
             <motion.div
-              className="text-left"
+              className="text-center md:text-left"
               initial={{ x: -30, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <CardTitle className="text-4xl font-bold text-white mb-2">
+              <CardTitle className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">
                 PLAYER: <span className="text-cyan-400">Patrick_Star</span>
               </CardTitle>
               <TypewriterTitle />
             </motion.div>
           </motion.div>
 
+          {/* Parágrafo responsivo */}
           <motion.p
-            className="text-gray-300 text-lg leading-relaxed text-center max-w-6xl"
+            className=" black:text-gray-300 text-base sm:text-lg leading-relaxed text-center md:text-justify max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.8 }}

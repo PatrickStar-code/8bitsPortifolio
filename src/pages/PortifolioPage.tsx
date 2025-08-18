@@ -4,6 +4,7 @@ import NavbarComponent from "../components/navbar";
 import { useNavigate } from "react-router-dom";
 import MainSection from "../components/mainSection";
 import AboutSection from "../components/aboutSection";
+import LanguagesSection from "../components/languagesSection";
 
 export default function PortifolioPage() {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ export default function PortifolioPage() {
       <NavbarComponent />
       <MainSection />
       <AboutSection />
+      <LanguagesSection />
       <img
         src="/imgs/gameboy.png"
         className="absolute right-4 bottom-4 cursor-pointer animate-bounce"

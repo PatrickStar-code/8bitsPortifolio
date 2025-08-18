@@ -33,7 +33,7 @@ export default function NavbarComponent() {
         transition={{ duration: 0.5 }}
         className="ml-2"
       >
-        <p className="text-2xl hover:text-[#3B82F6] font-bold">
+        <p className="text-lg md:text-2xl hover:text-[#3B82F6] font-bold">
           PatrickStarCode
         </p>
       </motion.div>
