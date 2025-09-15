@@ -5,7 +5,6 @@ import App from "./pages/App.tsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Error404Page from "./pages/Error404Page.tsx";
 import PortifolioPage from "./pages/PortifolioPage.tsx";
-import PixelCursor from "./components/pixelCursor.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -16,7 +15,6 @@ createRoot(document.getElementById("root")!).render(
 
         <Route path="/portifolio" element={<PortifolioPage />} />
       </Routes>
-      <PixelCursor />
     </BrowserRouter>
   </StrictMode>
 );

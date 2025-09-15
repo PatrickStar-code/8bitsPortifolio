@@ -86,7 +86,6 @@ export default function NavbarComponent() {
                 {item}
               </motion.a>
             ))}
-            <AnimatedThemeToggler />
           </motion.div>
         )}
       </AnimatePresence>

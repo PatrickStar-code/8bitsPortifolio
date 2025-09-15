@@ -1,10 +1,8 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import NavbarComponent from "../components/navbar";
+import GameSection from "../components/gameSection";
 import { useNavigate } from "react-router-dom";
-import MainSection from "../components/mainSection";
-import AboutSection from "../components/aboutSection";
-import LanguagesSection from "../components/languagesSection";
+import { AnimatedThemeToggler } from "../components/magicui/animated-theme-toggler";
 
 export default function PortifolioPage() {
   const navigate = useNavigate();
@@ -24,10 +22,8 @@ export default function PortifolioPage() {
       transition={{ duration: 1, ease: "easeInOut" }}
       viewport={{ once: true, amount: 0.3 }}
     >
-      <NavbarComponent />
-      <MainSection />
-      <AboutSection />
-      <LanguagesSection />
+      <AnimatedThemeToggler className="fixed top-4 right-4" />
+      <GameSection />
       <img
         src="/imgs/gameboy.png"
         className="absolute right-4 bottom-4 cursor-pointer animate-bounce"
