@@ -38,8 +38,7 @@ export default function JigSaw() {
             border-t-white dark:border-t-gray-800"
           ></div>
           <p className="text-sm font-semibold text-gray-800 dark:text-gray-100">
-            Falei que te levaria para um jogo... {""}
-            Caso Deseje voltar , clique em mim!
+            Você entrou no meu jogo... mas, se quiser escapar, clique em mim.
           </p>
         </motion.div>
       )}
