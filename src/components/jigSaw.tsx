@@ -3,13 +3,25 @@ import { motion } from "framer-motion";
 
 export default function JigSaw() {
   const [showDialog, setShowDialog] = useState(true);
+  const [phrase, setPharse] = useState(
+    "Você entrou no meu jogo... mas, se quiser escapar, clique em mim."
+  );
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowDialog(false);
-    }, 8000); // Oculta após 8 segundos
+    const timer1 = setTimeout(() => {
+      setPharse(
+        "Lembre-se, o jogo nunca termina... E para iniciar so clicar no botão de ligar logo acima."
+      );
+    }, 5000);
 
-    return () => clearTimeout(timer);
+    const timer2 = setTimeout(() => {
+      setShowDialog(false);
+    }, 10000); // Oculta após 10 segundos
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
   }, []);
 
   return (
@@ -38,7 +50,7 @@ export default function JigSaw() {
             border-t-white dark:border-t-gray-800"
           ></div>
           <p className="text-sm font-semibold text-gray-800 dark:text-gray-100">
-            Você entrou no meu jogo... mas, se quiser escapar, clique em mim.
+            {phrase}
           </p>
         </motion.div>
       )}

@@ -1,9 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { collisions } from "../data/collisions";
 
 function Game() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  console.log(collisions);
 
   useEffect(() => {
     const canvas = document.querySelector("canvas");
@@ -34,9 +33,52 @@ function Game() {
     canvas.width = window.innerWidth - 140;
     canvas.height = window.innerHeight - 140;
 
-    // Carrega o Fundo
-    c.fillStyle = "white";
-    c?.fillRect(0, 0, canvas.width, canvas.height);
+    class Boundary {
+      static width = 48;
+      static height = 48;
+      position: { x: number; y: number };
+      constructor({
+        position,
+      }: {
+        position: { x: number; y: number };
+        width?: number;
+        height?: number;
+      }) {
+        this.position = position;
+        this.width = 48;
+        this.height = 48;
+      }
+
+      draw() {
+        if (!c) return;
+        c.fillStyle = "red";
+        c?.fillRect(this.position.x, this.position.y, this.width, this.height);
+      }
+    }
+
+    const collisionsMap = [];
+    for (let i = 0; i < collisions.length; i += 70) {
+      collisionsMap.push(collisions.slice(i, 70 + i));
+    }
+
+    console.log(collisionsMap);
+    const boundaries = [] as Boundary[];
+    const offset = { x: -800, y: -800 };
+
+    collisionsMap.forEach((row, i) => {
+      row.forEach((symbol, j) => {
+        if (symbol === 1025) {
+          boundaries.push(
+            new Boundary({
+              position: {
+                x: j * Boundary.width + offset.x / 2,
+                y: i * Boundary.height + offset.y / 1.5,
+              },
+            })
+          );
+        }
+      });
+    });
 
     // Carrega o Background/Cidade
     const image = new Image();
@@ -44,8 +86,8 @@ function Game() {
 
     const background = new Sprite({
       position: {
-        x: -800,
-        y: -800,
+        x: offset.x,
+        y: offset.y,
       },
       image: image,
     });
@@ -66,6 +108,10 @@ function Game() {
       window.requestAnimationFrame(animate);
 
       background.draw();
+
+      boundaries.forEach((boundary) => {
+        boundary.draw();
+      });
 
       c?.drawImage(
         playerImage,
