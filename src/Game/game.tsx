@@ -63,7 +63,7 @@ function Game() {
 
     console.log(collisionsMap);
     const boundaries = [] as Boundary[];
-    const offset = { x: -800, y: -800 };
+    const offset = { x: -500, y: -550 };
 
     collisionsMap.forEach((row, i) => {
       row.forEach((symbol, j) => {
@@ -71,8 +71,8 @@ function Game() {
           boundaries.push(
             new Boundary({
               position: {
-                x: j * Boundary.width + offset.x / 2,
-                y: i * Boundary.height + offset.y / 1.5,
+                x: j * Boundary.width + -361,
+                y: i * Boundary.height + -485,
               },
             })
           );
@@ -119,7 +119,7 @@ function Game() {
         0,
         playerImage.width / 4,
         playerImage.height,
-        canvas.width / 2 - playerImage.width / 4 / 30,
+        canvas.width / 2 - playerImage.width / 4,
         canvas.height / 2 - playerImage.height / 2,
         (playerImage.width / 4) * 1.2,
         playerImage.height * 1.2
