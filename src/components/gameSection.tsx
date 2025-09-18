@@ -1,4 +1,4 @@
-import Game from "../Game/game";
+import Game from "../game/game.jsx";
 
 export default function GameSection() {
   return (
