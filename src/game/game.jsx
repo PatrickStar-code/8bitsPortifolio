@@ -11,6 +11,23 @@ export default function Game() {
     if (!canvasRef.current) return;
     if (!c) return;
 
+    class Boundary {
+      static width = 48;
+      static height = 48;
+      position;
+      constructor({ position }) {
+        this.position = position;
+        this.width = 48;
+        this.height = 48;
+      }
+
+      draw() {
+        if (!c) return;
+        c.fillStyle = "rgba(255, 0, 0, 0.2";
+        c?.fillRect(this.position.x, this.position.y, this.width, this.height);
+      }
+    }
+
     class Sprite {
       position;
       image;
@@ -50,23 +67,6 @@ export default function Game() {
 
     canvas.width = window.innerWidth - 140;
     canvas.height = window.innerHeight - 140;
-
-    class Boundary {
-      static width = 48;
-      static height = 48;
-      position;
-      constructor({ position }) {
-        this.position = position;
-        this.width = 48;
-        this.height = 48;
-      }
-
-      draw() {
-        if (!c) return;
-        c.fillStyle = "rgba(255, 0, 0, 0.2";
-        c?.fillRect(this.position.x, this.position.y, this.width, this.height);
-      }
-    }
 
     const collisionsMap = [];
     for (let i = 0; i < collisions.length; i += 70) {
