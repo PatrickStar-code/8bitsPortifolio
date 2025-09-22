@@ -1,6 +1,6 @@
 import Gameboy from "../components/gameboy";
 import JigSaw from "../components/jigSaw";
-import { AnimatedThemeToggler } from "../components/magicui/animated-theme-toggler";
+import { AnimatedThemeToggler } from "../components/ui/animated-theme-toggler";
 
 function App() {
   return (

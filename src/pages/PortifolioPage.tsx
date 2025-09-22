@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import GameSection from "../components/gameSection";
 import { useNavigate } from "react-router-dom";
-import { AnimatedThemeToggler } from "../components/magicui/animated-theme-toggler";
+import GameSection from "../components/gameSection";
 
 export default function PortifolioPage() {
   const navigate = useNavigate();
@@ -17,12 +16,11 @@ export default function PortifolioPage() {
 
   return (
     <motion.main
-      className=" w-full h-screen overflow-hidden snap-mandatory scroll-smooth snap-y overflow-y-scroll "
+      className=" w-full overflow-hidden"
       animate={zoomOut ? { scale: 0, opacity: 0 } : { scale: 1 }}
       transition={{ duration: 1, ease: "easeInOut" }}
       viewport={{ once: true, amount: 0.3 }}
     >
-      <AnimatedThemeToggler className="fixed top-4 right-4" />
       <GameSection />
       <img
         src="/imgs/gameboy.png"

@@ -59,7 +59,7 @@ export default function Gameboy() {
 
         {/* Logo */}
         <div className="flex items-left">
-          <h2 className="retro mt-2 text-1xl text-left text-[#3F467E]">
+          <h2 className="retro mt-2 text-lg  text-left text-[#3F467E]">
             Nintendo Gameboy<span className="text-[0.5rem]">TM</span>
           </h2>
         </div>
