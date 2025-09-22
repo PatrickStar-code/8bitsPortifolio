@@ -1,4 +1,3 @@
-import type React from "react";
 import { Button } from "./button";
 
 export default function MenuGameBoy({
