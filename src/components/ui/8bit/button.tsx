@@ -1,11 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { type VariantProps, cva } from "class-variance-authority";
 
-import { cn } from "@/lib/utils";
-
-import { Button as ShadcnButton } from "@/components/ui/button";
-
 import "./styles/retro.css";
+import { cn } from "../../../lib/utils";
+import { Button as ShadcnButton } from "../button";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const buttonVariants = cva("", {
   variants: {
     font: {
