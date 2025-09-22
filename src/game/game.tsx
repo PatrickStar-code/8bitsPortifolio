@@ -11,7 +11,7 @@ export default function Game() {
       global: false,
       touchToMouse: true,
       canvas: canvas,
-      debug: true,
+      debug: false,
       width: window.innerWidth,
       height: window.innerHeight,
     });
@@ -225,7 +225,7 @@ export default function Game() {
   return (
     <div id="app">
       <div id="ui">
-        <p className="note">Tap/Click arround to move</p>
+        <p className="note">Clique para se movimentar</p>
         <div
           className="textbox-container"
           id="textbox-container"
