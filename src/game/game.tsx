@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { scaleFactor, dialogueData } from "./constants";
 import { displayDialogue, setCamScale } from "./utilsGame";
 import kaboom from "kaboom";
@@ -171,7 +170,7 @@ export default function Game() {
       k.onKeyRelease(() => {
         stopAnims();
       });
-      k.onKeyDown((key) => {
+      k.onKeyDown(() => {
         const keyMap = [
           k.isKeyDown("right"),
           k.isKeyDown("left"),

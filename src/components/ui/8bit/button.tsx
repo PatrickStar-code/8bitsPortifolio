@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { type VariantProps, cva } from "class-variance-authority";
 
 import "./styles/retro.css";
@@ -44,15 +43,7 @@ export interface BitButtonProps
 }
 
 function Button({ children, asChild, ...props }: BitButtonProps) {
-  const {
-    variant,
-    size,
-    className,
-    font,
-    colorBorder,
-    colorBorderBlack,
-    colorBorderHover,
-  } = props;
+  const { variant, size, className, font, colorBorder } = props;
 
   return (
     <ShadcnButton

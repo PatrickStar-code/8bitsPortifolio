@@ -1,9 +1,9 @@
 import { Power, PowerOff } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import MenuGameBoy from "./menu";
 import { useNavigate } from "react-router-dom";
 import Dpad from "./dpad";
+import MenuGameBoy from "./ui/8bit/menu";
 
 export default function Gameboy() {
   const [isOn, setIsOn] = useState(false);
