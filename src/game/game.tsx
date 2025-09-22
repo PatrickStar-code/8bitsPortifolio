@@ -236,7 +236,7 @@ export default function Game() {
             <p id="dialogue" className="ui-text text-sm md:text-2xl"></p>
             <div className="btn-container">
               <button id="close" className="ui-close-btn text-bla">
-                Close
+                Fechar
               </button>
             </div>
           </div>
