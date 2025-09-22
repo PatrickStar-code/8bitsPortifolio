@@ -112,6 +112,11 @@ body {
   user-select: none;
 }
 
+.ui-text a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
 .ui-close-btn {
   font-family: monogram, monospace;
   border-style: none;
@@ -294,7 +299,8 @@ body {
   mix-blend-mode: normal;
 }
 
-::view-transition-old(root), ::view-transition-new(root) {
-    animation: none;
-    mix-blend-mode: normal;
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
