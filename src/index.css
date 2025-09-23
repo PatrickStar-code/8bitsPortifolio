@@ -107,6 +107,23 @@ body {
   /* overflow: auto; */
 }
 
+#ImgBox {
+  position: fixed;
+  bottom: 50vh;
+  min-height: 10vh;
+  background: white;
+  border-radius: 3px;
+  outline-style: solid;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  word-spacing: 0.2rem;
+  filter: drop-shadow(0 0 0.75rem rgb(112, 112, 112));
+  /* overflow: auto; */
+}
+
 .ui-text {
   margin: 0;
   user-select: none;

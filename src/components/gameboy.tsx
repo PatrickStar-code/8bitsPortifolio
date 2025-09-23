@@ -67,7 +67,7 @@ export default function Gameboy() {
         <Dpad />
         {/* Fim Dpad */}
         {/* Bottoes a e B    */}
-        <div className="button-container relative left-[5rem] top-[7rem]">
+        <div className="button-container relative  left-[3rem] md:left-[5rem] top-[7rem]">
           <div className="A-Container">
             <button
               className="button absolute bg-[#7D0A45]  hover:bg-[#620835] rounded-full w-15 h-15   "

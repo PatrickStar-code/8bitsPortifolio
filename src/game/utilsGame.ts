@@ -2,6 +2,9 @@
 export function displayDialogue(text: string, OnDisplayEnd = () => { }) {
     const dialogueUI = document.getElementById("textbox-container");
     const dialogue = document.getElementById("dialogue");
+    const imgBoxContainer = document.querySelector(
+        ".imgBox-container"
+    ) as HTMLDivElement;
 
     dialogueUI!.style.display = "block";
 
@@ -25,7 +28,12 @@ export function displayDialogue(text: string, OnDisplayEnd = () => { }) {
         dialogueUI!.style.display = "none";
         dialogue!.innerHTML = "";
         clearInterval(intervalRef);
+        imgBoxContainer.style.display = "none";
+
         closeBtn!.removeEventListener("click", onCloseBtnClick);
+
+
+
     }
 
     closeBtn?.addEventListener("click", onCloseBtnClick);

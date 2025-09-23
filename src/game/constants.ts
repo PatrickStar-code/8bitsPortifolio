@@ -17,4 +17,5 @@ Aqui está o meu <a href="https://github.com/PatrickStar-code" target="_blank">G
   cat: `Esse é meu gato Simba. Ele ja enfrentou monstros que tal conferir as aventuras dele no <a href="https://github.com/PatrickStar-code/Pixel-Survival" target="_blank" className="text-blue-800">Pixel Survival</a>?`,
   photo: "Essa é uma foto.Me fez lembrar de um site para um fotografo que fiz, que tal conferir o <a href='https://arthurcesarfotografia.vercel.app/' target='_blank' className='text-blue-800'>PhotoPortfolio</a>?",
   notebook: "Mais uma prateleira de livros... mas aqui guardo vários diários. Que tal organizar os seus no meu site: <a href='https://notebookly.vercel.app/' target='_blank' className='text-blue-800'>Caderno</a>?",
+  me: "Esta é uma foto minha.",
 };

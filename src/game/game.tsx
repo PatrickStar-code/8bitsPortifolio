@@ -75,6 +75,16 @@ export default function Game() {
                   dialogueData[boundary.name as keyof typeof dialogueData],
                   () => (player.isInDialogue = false)
                 );
+
+                if (boundary.name === "me") {
+                  const imgBox = document.getElementById("ImgBox")!;
+                  imgBox.innerHTML = `<img src="./imgs/out_2.png" alt="Foto do Patrick" class="imgBox-img"/>`;
+                  const imgBoxContainer = document.querySelector(
+                    ".imgBox-container"
+                  ) as HTMLDivElement;
+                  imgBoxContainer.style.display = "block";
+                  player.isInDialogue = true;
+                }
               });
             }
           }
@@ -172,10 +182,10 @@ export default function Game() {
       });
       k.onKeyDown(() => {
         const keyMap = [
-          k.isKeyDown("right"),
-          k.isKeyDown("left"),
-          k.isKeyDown("up"),
-          k.isKeyDown("down"),
+          k.isKeyDown("d"),
+          k.isKeyDown("a"),
+          k.isKeyDown("w"),
+          k.isKeyDown("s"),
         ];
 
         let nbOfKeyPressed = 0;
@@ -226,6 +236,14 @@ export default function Game() {
     <div id="app">
       <div id="ui">
         <p className="note">Clique para se movimentar</p>
+
+        <div className="imgBox-container" style={{ display: "none" }}>
+          <div
+            className="imgBox left-[30%] right-[30%] md:left-[40%] md:right-[40%]"
+            id="ImgBox"
+          ></div>
+        </div>
+
         <div
           className="textbox-container"
           id="textbox-container"
