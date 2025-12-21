@@ -85,6 +85,16 @@ export default function Game() {
                   imgBoxContainer.style.display = "block";
                   player.isInDialogue = true;
                 }
+
+                if (boundary.name === "Game") {
+                  const imgBox = document.getElementById("ImgBox")!;
+                  imgBox.innerHTML = `<img src="./AssetsGame/doom.png" alt="Foto do Doom" class="imgBox-img" width="1080px"/>`;
+                  const imgBoxContainer = document.querySelector(
+                    ".imgBox-container"
+                  ) as HTMLDivElement;
+                  imgBoxContainer.style.display = "block";
+                  player.isInDialogue = true;
+                }
               });
             }
           }
@@ -180,53 +190,6 @@ export default function Game() {
       k.onKeyRelease(() => {
         stopAnims();
       });
-      k.onKeyDown(() => {
-        const keyMap = [
-          k.isKeyDown("d"),
-          k.isKeyDown("a"),
-          k.isKeyDown("w"),
-          k.isKeyDown("s"),
-        ];
-
-        let nbOfKeyPressed = 0;
-        for (const key of keyMap) {
-          if (key) {
-            nbOfKeyPressed++;
-          }
-        }
-
-        if (nbOfKeyPressed > 1) return;
-
-        if (player.isInDialogue) return;
-        if (keyMap[0]) {
-          player.flipX = false;
-          if (player.curAnim() !== "walk-side") player.play("walk-side");
-          player.direction = "right";
-          player.move(player.speed, 0);
-          return;
-        }
-
-        if (keyMap[1]) {
-          player.flipX = true;
-          if (player.curAnim() !== "walk-side") player.play("walk-side");
-          player.direction = "left";
-          player.move(-player.speed, 0);
-          return;
-        }
-
-        if (keyMap[2]) {
-          if (player.curAnim() !== "walk-up") player.play("walk-up");
-          player.direction = "up";
-          player.move(0, -player.speed);
-          return;
-        }
-
-        if (keyMap[3]) {
-          if (player.curAnim() !== "walk-down") player.play("walk-down");
-          player.direction = "down";
-          player.move(0, player.speed);
-        }
-      });
     });
 
     k.go("main");
@@ -251,8 +214,11 @@ export default function Game() {
         >
           <div id="textbox" className="absolute text-black">
             <p id="dialogue" className="ui-text text-sm md:text-2xl"></p>
-            <div className="btn-container">
-              <button id="close" className="ui-close-btn text-bla">
+            <div className="btn-container flex gap-4">
+              <button id="play" className="ui-play-btn text-black">
+                Jogar
+              </button>
+              <button id="close" className="ui-close-btn text-black">
                 Fechar
               </button>
             </div>

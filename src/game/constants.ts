@@ -18,4 +18,5 @@ Aqui está o meu <a href="https://github.com/PatrickStar-code" target="_blank">G
   photo: "Essa é uma foto.Me fez lembrar de um site para um fotografo que fiz, que tal conferir o <a href='https://arthurcesarfotografia.vercel.app/' target='_blank' className='text-blue-800'>PhotoPortfolio</a>?",
   notebook: "Mais uma prateleira de livros... mas aqui guardo vários diários. Que tal organizar os seus no meu site: <a href='https://notebookly.vercel.app/' target='_blank' className='text-blue-800'>Caderno</a>?",
   me: "Esta é uma foto minha.",
+  Game: "Aqui é minha tv com um pendrive de jogos retrô. Adoro jogar jogos clássicos nas horas vagas! Quer testar ?",
 };
