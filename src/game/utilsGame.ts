@@ -43,16 +43,32 @@ export function displayDialogue(text: string, OnDisplayEnd = () => { }) {
 
     const playButton = document.getElementById("play");
 
+
     function onPlayButtonClick() {
-        playButton!.style.display = "none";
-        const imgBox = document.getElementById("ImgBox")!;
-        imgBox.innerHTML = `<iframe
-            src="https://playclassic.games/games/first-person-shooter-dos-games-online/play-doom-online/"
-            width="800"
-            height="600">
-            </iframe>
-            `;
+        const imgBox = document.getElementById("ImgBox");
+
+        if (!playButton || !imgBox) return;
+
+        playButton.style.display = "none";
+
+        const iframe = document.createElement("iframe");
+        iframe.src =
+            "https://playclassic.games/games/first-person-shooter-dos-games-online/play-doom-online/";
+        iframe.allow = "fullscreen; autoplay";
+        iframe.allowFullscreen = true;
+
+        iframe.style.width = "600px";
+        iframe.style.height = "800px";
+        iframe.style.border = "none";
+        iframe.style.overflow = "hidden";
+
+        imgBox.innerHTML = "";
+        imgBox.appendChild(iframe);
+
     }
+
+
+
 
     playButton?.addEventListener("click", onPlayButtonClick);
 

@@ -16,16 +16,18 @@ export default function Game() {
       height: window.innerHeight,
     });
 
-    k.loadSprite("spritesheet", "./AssetsGame/spritesheet.png", {
-      sliceX: 39,
-      sliceY: 31,
+    k.loadSprite("spritesheet", "./AssetsGame/character.png", {
+      sliceX: 4,
+      sliceY: 5,
       anims: {
-        "idle-down": 936,
-        "walk-down": { from: 936, to: 939, loop: true, speed: 8 },
-        "idle-side": 975,
-        "walk-side": { from: 975, to: 978, loop: true, speed: 8 },
-        "idle-up": 1014,
-        "walk-up": { from: 1014, to: 1017, loop: true, speed: 8 },
+        "idle-down": 1,
+        "walk-down": { from: 0, to: 3, loop: true, speed: 8 },
+
+        "idle-side": 9,
+        "walk-side": { from: 8, to: 11, loop: true, speed: 8 },
+
+        "idle-up": 16,
+        "walk-up": { from: 16, to: 19, loop: true, speed: 8 },
       },
     });
 
@@ -160,14 +162,14 @@ export default function Game() {
         if (Math.abs(mouseAngle) > upperBound) {
           player.flipX = false;
           if (player.curAnim() !== "walk-side") player.play("walk-side");
-          player.direction = "right";
+          player.direction = "left";
           return;
         }
 
         if (Math.abs(mouseAngle) < lowerBound) {
           player.flipX = true;
           if (player.curAnim() !== "walk-side") player.play("walk-side");
-          player.direction = "left";
+          player.direction = "right";
           return;
         }
       });
@@ -215,7 +217,7 @@ export default function Game() {
           <div id="textbox" className="absolute text-black">
             <p id="dialogue" className="ui-text text-sm md:text-2xl"></p>
             <div className="btn-container flex gap-4">
-              <button id="play" className="ui-play-btn text-black">
+              <button id="play" className="ui-play-btn text-black hidden">
                 Jogar
               </button>
               <button id="close" className="ui-close-btn text-black">
