@@ -58,10 +58,29 @@ export default function Game() {
         "player",
       ]);
 
+      const interactIndicator = k.add([
+        k.text("!", { size: 24, font: "monospace" }),
+        k.pos(0, 0),
+        k.anchor("center"),
+        k.color(255, 255, 255),
+        k.opacity(0),
+        {
+          update() {
+            if (player.isInDialogue) {
+              // @ts-expect-error - interactIndicator is a GameObj
+              this.opacity = 0;
+              return;
+            }
+            // @ts-expect-error - interactIndicator is a GameObj
+            this.pos = player.pos.add(k.vec2(0, -50));
+          },
+        },
+      ]) as any;
+
       for (const layer of layers) {
         if (layer.name === "boundaries") {
           for (const boundary of layer.objects) {
-            map.add([
+            const b = map.add([
               k.area({
                 shape: new k.Rect(k.vec2(0), boundary.width, boundary.height),
               }),
@@ -75,14 +94,14 @@ export default function Game() {
                 player.isInDialogue = true;
                 displayDialogue(
                   dialogueData[boundary.name as keyof typeof dialogueData],
-                  () => (player.isInDialogue = false)
+                  () => (player.isInDialogue = false),
                 );
 
                 if (boundary.name === "me") {
                   const imgBox = document.getElementById("ImgBox")!;
                   imgBox.innerHTML = `<img src="./imgs/out_2.png" alt="Foto do Patrick" class="imgBox-img"/>`;
                   const imgBoxContainer = document.querySelector(
-                    ".imgBox-container"
+                    ".imgBox-container",
                   ) as HTMLDivElement;
                   imgBoxContainer.style.display = "block";
                   player.isInDialogue = true;
@@ -92,10 +111,27 @@ export default function Game() {
                   const imgBox = document.getElementById("ImgBox")!;
                   imgBox.innerHTML = `<img src="./AssetsGame/doom.png" alt="Foto do Doom" class="imgBox-img" width="1080px"/>`;
                   const imgBoxContainer = document.querySelector(
-                    ".imgBox-container"
+                    ".imgBox-container",
                   ) as HTMLDivElement;
                   imgBoxContainer.style.display = "block";
                   player.isInDialogue = true;
+                }
+              });
+
+              // Show indicator when near
+              b.onUpdate(() => {
+                const dist = player.pos.dist(
+                  b
+                    .worldPos()
+                    .add(
+                      k.vec2(
+                        (boundary.width / 2) * scaleFactor,
+                        (boundary.height / 2) * scaleFactor,
+                      ),
+                    ),
+                );
+                if (dist < 100 && !player.isInDialogue) {
+                  interactIndicator.opacity = 1;
                 }
               });
             }
@@ -109,7 +145,7 @@ export default function Game() {
             if (entity.name === "player") {
               player.pos = k.vec2(
                 (map.pos.x + entity.x) * scaleFactor,
-                (map.pos.y + entity.y) * scaleFactor
+                (map.pos.y + entity.y) * scaleFactor,
               );
               k.add(player);
               continue;
@@ -126,6 +162,8 @@ export default function Game() {
 
       k.onUpdate(() => {
         k.camPos(player.worldPos().x, player.worldPos().y - 100);
+        // Reset indicator opacity if not near anything
+        interactIndicator.opacity = k.lerp(interactIndicator.opacity, 0, 0.1);
       });
 
       k.onMouseDown((mouseBtn) => {
@@ -198,36 +236,57 @@ export default function Game() {
   }, []);
 
   return (
-    <div id="app">
-      <div id="ui">
-        <p className="note">Clique para se movimentar</p>
+    <div
+      id="app"
+      className="relative w-screen h-screen overflow-hidden bg-[#311047]"
+    >
+      <div id="ui" className="absolute inset-0 pointer-events-none z-50">
+        <p className="note absolute top-4 left-4 text-white/50 text-xs retro">
+          Clique para se movimentar
+        </p>
 
-        <div className="imgBox-container" style={{ display: "none" }}>
-          <div
-            className="imgBox left-[30%] right-[30%] md:left-[40%] md:right-[40%]"
-            id="ImgBox"
-          ></div>
+        <div
+          className="imgBox-container absolute inset-0 flex items-center justify-center pointer-events-auto"
+          style={{ display: "none" }}
+        >
+          <div className="imgBox" id="ImgBox"></div>
         </div>
 
         <div
-          className="textbox-container"
+          className="textbox-container absolute inset-0 flex items-end justify-center p-4 pointer-events-auto"
           id="textbox-container"
           style={{ display: "none" }}
         >
-          <div id="textbox" className="absolute text-black">
-            <p id="dialogue" className="ui-text text-sm md:text-2xl"></p>
-            <div className="btn-container flex gap-4">
-              <button id="play" className="ui-play-btn text-black hidden">
-                Jogar
-              </button>
-              <button id="close" className="ui-close-btn text-black">
-                Fechar
-              </button>
+          <div id="textbox" className="text-black">
+            <div
+              id="textbox-portrait"
+              className="flex-shrink-0 bg-gray-200 border-2 border-black overflow-hidden w-16 h-16 md:w-20 md:h-20"
+            >
+              <img
+                src="./AssetsGame/character.png"
+                alt="Character"
+                className="w-full h-full object-cover scale-[3] origin-top"
+              />
             </div>
+            <div id="textbox-content" className="flex-1 min-w-0">
+              <p
+                id="dialogue"
+                className="ui-text text-sm md:text-xl lg:text-2xl break-words"
+              ></p>
+              <div className="btn-container flex gap-4 mt-2">
+                <button id="play" className="ui-play-btn text-black hidden">
+                  Jogar
+                </button>
+                <button id="close" className="ui-close-btn">
+                  Fechar
+                </button>
+              </div>
+            </div>
+            <div className="next-indicator"></div>
           </div>
         </div>
       </div>
-      <canvas id="game"></canvas>
+      <canvas id="game" className="w-full h-full block"></canvas>
     </div>
   );
 }
