@@ -164,12 +164,12 @@ body {
 }
 
 #ImgBox {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 90%;
-  max-width: 600px;
+  max-width: 400px;
   background: white;
   border: 4px solid #333;
   border-radius: 8px;
@@ -177,89 +177,34 @@ body {
   flex-direction: column;
   align-items: center;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-  z-index: 90;
+  z-index: 100;
   overflow: hidden;
+  filter: drop-shadow(0 0 0.75rem rgb(112, 112, 112));
+}
+
+.imgBox-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  image-rendering: pixelated;
 }
 
 @keyframes slideUp {
-  from { transform: translateY(100%); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from { transform: translate(-50%, 100%); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
 }
 
 #textbox-portrait {
-  width: 80px;
-  height: 80px;
+  width: 48px;
+  height: 48px;
   background: #eee;
-  border: 3px solid #333;
+  border: 2px solid #333;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   border-radius: 4px;
-}
-
-#textbox-content {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-#dialogue {
-  margin: 0;
-  line-height: 1.4;
-  color: #333;
-}
-
-.next-indicator {
-  position: absolute;
-  bottom: 10px;
-  right: 15px;
-  width: 12px;
-  height: 12px;
-  background: #a51259;
-  border-radius: 2px;
-  animation: pulse 0.6s infinite;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.2); opacity: 0.5; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-.ui-close-btn {
-  background: #333;
-  color: white !important;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-size: 1.2rem;
-}
-
-.ui-close-btn:hover {
-  background: #555;
-  transform: scale(1.05);
-}
-
-#ImgBox {
-  position: fixed;
-  bottom: 50vh;
-  min-height: 10vh;
-  background: white;
-  border-radius: 3px;
-  outline-style: solid;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
-  word-spacing: 0.2rem;
-  filter: drop-shadow(0 0 0.75rem rgb(112, 112, 112));
-  /* overflow: auto; */
 }
 
 .ui-text {

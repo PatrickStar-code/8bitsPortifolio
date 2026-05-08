@@ -16,7 +16,7 @@ export default function Game() {
       height: window.innerHeight,
     });
 
-    k.loadSprite("spritesheet", "./AssetsGame/character.png", {
+    k.loadSprite("spritesheet", "/AssetsGame/character.png", {
       sliceX: 4,
       sliceY: 5,
       anims: {
@@ -31,12 +31,12 @@ export default function Game() {
       },
     });
 
-    k.loadSprite("map", "./AssetsGame/map.png");
+    k.loadSprite("map", "/AssetsGame/map.png");
 
     k.setBackground(k.Color.fromHex("#311047"));
 
     k.scene("main", async () => {
-      const mapData = await (await fetch("./AssetsGame/map.json")).json();
+      const mapData = await (await fetch("/AssetsGame/map.json")).json();
       const layers = mapData.layers;
 
       const map = k.add([k.sprite("map"), k.pos(0), k.scale(scaleFactor)]);
@@ -75,6 +75,7 @@ export default function Game() {
             this.pos = player.pos.add(k.vec2(0, -50));
           },
         },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ]) as any;
 
       for (const layer of layers) {
@@ -99,7 +100,7 @@ export default function Game() {
 
                 if (boundary.name === "me") {
                   const imgBox = document.getElementById("ImgBox")!;
-                  imgBox.innerHTML = `<img src="./imgs/out_2.png" alt="Foto do Patrick" class="imgBox-img"/>`;
+                  imgBox.innerHTML = `<img src="/imgs/out_2.png" alt="Foto do Patrick" class="imgBox-img"/>`;
                   const imgBoxContainer = document.querySelector(
                     ".imgBox-container",
                   ) as HTMLDivElement;
@@ -109,7 +110,7 @@ export default function Game() {
 
                 if (boundary.name === "Game") {
                   const imgBox = document.getElementById("ImgBox")!;
-                  imgBox.innerHTML = `<img src="./AssetsGame/doom.png" alt="Foto do Doom" class="imgBox-img" width="1080px"/>`;
+                  imgBox.innerHTML = `<img src="/AssetsGame/doom.png" alt="Foto do Doom" class="imgBox-img" width="1080px"/>`;
                   const imgBoxContainer = document.querySelector(
                     ".imgBox-container",
                   ) as HTMLDivElement;
@@ -258,16 +259,6 @@ export default function Game() {
           style={{ display: "none" }}
         >
           <div id="textbox" className="text-black">
-            <div
-              id="textbox-portrait"
-              className="flex-shrink-0 bg-gray-200 border-2 border-black overflow-hidden w-16 h-16 md:w-20 md:h-20"
-            >
-              <img
-                src="./AssetsGame/character.png"
-                alt="Character"
-                className="w-full h-full object-cover scale-[3] origin-top"
-              />
-            </div>
             <div id="textbox-content" className="flex-1 min-w-0">
               <p
                 id="dialogue"
